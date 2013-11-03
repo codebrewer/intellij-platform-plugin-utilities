@@ -1,6 +1,6 @@
 <!--
 
-  Copyright 2009 Mark Scott
+  Copyright 2009, 2013 Mark Scott
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -13,8 +13,6 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-
-  $Id: build.xml 98 2009-07-05 10:21:10Z mark $
 
 -->
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006, 2009 Mark Scott
+ * Copyright 2006, 2009, 2013 Mark Scott
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import java.util.ResourceBundle;
  * keys.
  *
  * @author Mark Scott
- * @version $Id: ResourceBundleManager.java 96 2009-07-01 21:47:36Z mark $
  */
 public final class ResourceBundleManager
 {
