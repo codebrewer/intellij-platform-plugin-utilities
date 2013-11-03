@@ -1,0 +1,8 @@
+# IntelliJ IDEA
+.idea/dictionaries/
+.idea/workspace.xml
+
+# Maven
+log/
+site/
+target/
