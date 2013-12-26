@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jetbrains.intellij:trove4j:117.157">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/intellij/trove4j/117.157/trove4j-117.157.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/intellij/trove4j/117.157/trove4j-117.157-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/intellij/trove4j/117.157/trove4j-117.157-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

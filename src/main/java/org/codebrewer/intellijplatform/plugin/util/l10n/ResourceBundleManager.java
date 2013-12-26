@@ -1,5 +1,5 @@
 /*
- * Copyright 2006, 2009 Mark Scott
+ * Copyright 2006, 2009, 2013 Mark Scott
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.codebrewer.idea.util.l10n;
+package org.codebrewer.intellijplatform.plugin.util.l10n;
 
 import com.intellij.openapi.diagnostic.Logger;
 
@@ -27,7 +27,6 @@ import java.util.ResourceBundle;
  * keys.
  *
  * @author Mark Scott
- * @version $Id: ResourceBundleManager.java 96 2009-07-01 21:47:36Z mark $
  */
 public final class ResourceBundleManager
 {
@@ -44,7 +43,7 @@ public final class ResourceBundleManager
    * to cache loaded bundles for quick retrieval on subsequent requests for the
    * same bundle.
    */
-  private static final Map NAME_TO_BUNDLE_MAP = new HashMap();
+  private static final Map<String, ResourceBundle> NAME_TO_BUNDLE_MAP = new HashMap<String, ResourceBundle>();
 
   /**
    * Gets a localized mnemonic for a given key.  If the string associated with
@@ -125,11 +124,11 @@ public final class ResourceBundleManager
       throw new IllegalArgumentException("Class object cannot be null");
     }
 
-    final String bundleName = new StringBuffer(RESOURCE_BUNDLE_NAME_MAX_LENGTH)
+    final String bundleName = new StringBuilder(RESOURCE_BUNDLE_NAME_MAX_LENGTH)
         .append(clazz.getName())
         .append("Resources")
         .toString();
-    ResourceBundle bundle = (ResourceBundle) NAME_TO_BUNDLE_MAP.get(bundleName);
+    ResourceBundle bundle = NAME_TO_BUNDLE_MAP.get(bundleName);
 
     if (bundle == null && !NAME_TO_BUNDLE_MAP.containsKey(bundleName)) {
       LOGGER.debug("Cache miss for ResourceBundle: " + bundleName);
