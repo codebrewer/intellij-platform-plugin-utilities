@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.codebrewer.intellij</groupId>
   <artifactId>codebrewer-intellij-platform-plugin-utilities</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>codebrewer-intellij-platform-plugin-utilities</name>
   <url>https://bitbucket.org/codebrewer/intellij-platform-plugin-utilities</url>
@@ -48,17 +48,11 @@
       </plugin>
     </plugins>
   </build>
-  <repositories>
-    <repository>
-      <id>jetbrains-all</id>
-      <url>http://repository.jetbrains.com/all</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.intellij</groupId>
       <artifactId>intellij-core</artifactId>
-      <version>117.157</version>
+      <version>135.690</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
