@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jetbrains.intellij:intellij-core:135.690">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/intellij/intellij-core/135.690/intellij-core-135.690.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/intellij/intellij-core/135.690/intellij-core-135.690-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/intellij/intellij-core/135.690/intellij-core-135.690-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
