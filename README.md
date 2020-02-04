@@ -9,7 +9,7 @@ on the IntelliJ Platform (such as IntelliJ IDEA, AppCode or CLion).
 
 ## Requirements
 
-* JDK 1.6
+* JDK 1.8
 
 ## Building and Testing
 
