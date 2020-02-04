@@ -8,6 +8,24 @@
   <name>codebrewer-intellij-platform-plugin-utilities</name>
   <url>https://bitbucket.org/codebrewer/intellij-platform-plugin-utilities</url>
   <description>Utilities likely to be generally useful to IntelliJ Platform plug-ins.</description>
+  <repositories>
+    <repository>
+      <id>jetbrains-releases</id>
+      <name>JetBrains Release Repository</name>
+      <url>https://www.jetbrains.com/intellij-repository/releases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jetbrains-3rd-party</id>
+      <name>JetBrains 3rd Party Repository</name>
+      <url>https://jetbrains.bintray.com/intellij-third-party-dependencies</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <build>
     <plugins>
       <plugin>
@@ -71,9 +89,9 @@
   </build>
   <dependencies>
     <dependency>
-      <groupId>org.jetbrains.intellij</groupId>
-      <artifactId>intellij-core</artifactId>
-      <version>135.690</version>
+      <groupId>com.jetbrains.intellij.platform</groupId>
+      <artifactId>util</artifactId>
+      <version>193.6015.39</version> <!-- IntelliJ IDEA 2019.3.2 -->
       <scope>compile</scope>
     </dependency>
   </dependencies>

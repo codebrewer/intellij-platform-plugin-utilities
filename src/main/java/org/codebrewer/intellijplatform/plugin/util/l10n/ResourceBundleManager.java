@@ -56,7 +56,7 @@ public final class ResourceBundleManager
    * @return the localized mnemonic char for the given key or <code>'\0'</code>
    *         if no such resource is found.
    *
-   * @throws IllegalArgumentException if either parameter is <code>null<code>.
+   * @throws IllegalArgumentException if either parameter is <code>null</code>.
    */
   public static char getLocalizedMnemonic(final Class clazz, final String key)
   {
@@ -82,7 +82,7 @@ public final class ResourceBundleManager
    * @return the localized string for the given key or <code>null</code> if no
    *         such resource is found.
    *
-   * @throws IllegalArgumentException if either parameter is <code>null<code>.
+   * @throws IllegalArgumentException if either parameter is <code>null</code>.
    */
   public static String getLocalizedString(final Class clazz, final String key)
   {
