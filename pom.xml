@@ -40,6 +40,82 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+        <configuration>
+          <excludedGroups>org.codebrewer.test.IntegrationTest</excludedGroups>
+          <systemPropertyVariables>
+            <jacoco-agent.destfile>${project.build.directory}/site/jacoco/coverage.exec</jacoco-agent.destfile>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- For JaCoCo coverage when using PowerMock see: -->
+        <!-- See https://github.com/powermock/powermock/wiki/Code-coverage-with-JaCoCo -->
+        <!-- "Offline instrumentation" approach used here -->
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.5</version>
+        <executions>
+          <execution>
+            <id>default-instrument</id>
+            <goals>
+              <goal>instrument</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-restore-instrumented-classes</id>
+            <goals>
+              <goal>restore-instrumented-classes</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <configuration>
+              <dataFile>${project.build.directory}/site/jacoco/coverage.exec</dataFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>add-integration-test-source</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/integration-test/java</source>
+              </sources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-integration-test-resource</id>
+            <phase>generate-test-resources</phase>
+            <goals>
+              <goal>add-test-resource</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>src/integration-test/resources</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.9.1</version>
         <executions>
@@ -94,8 +170,54 @@
       <version>193.6015.39</version> <!-- IntelliJ IDEA 2019.3.2 -->
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4</artifactId>
+      <version>1.6.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-mockito</artifactId>
+      <version>1.6.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jacoco</groupId>
+      <artifactId>org.jacoco.agent</artifactId>
+      <version>0.8.5</version>
+      <classifier>runtime</classifier>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <profiles>
+    <profile>
+      <id>integration</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+              <includes>
+                <include>**/*</include>
+              </includes>
+              <groups>org.codebrewer.test.IntegrationTest</groups>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
