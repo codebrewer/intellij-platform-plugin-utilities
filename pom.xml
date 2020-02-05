@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.codebrewer.intellij</groupId>
-  <artifactId>codebrewer-intellij-platform-plugin-utilities</artifactId>
+  <groupId>org.codebrewer</groupId>
+  <artifactId>intellij-platform-plugin-utilities</artifactId>
   <version>1.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>codebrewer-intellij-platform-plugin-utilities</name>
-  <url>https://bitbucket.org/codebrewer/intellij-platform-plugin-utilities</url>
+  <name>IntelliJ Platform Plugin Utilities</name>
+  <url>https://github.com/codebrewer/intellij-platform-plugin-utilities</url>
   <description>Utilities likely to be generally useful to IntelliJ Platform plug-ins.</description>
   <repositories>
     <repository>
