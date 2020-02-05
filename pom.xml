@@ -44,7 +44,42 @@
         <version>2.22.2</version>
         <configuration>
           <excludedGroups>org.codebrewer.test.IntegrationTest</excludedGroups>
+          <systemPropertyVariables>
+            <jacoco-agent.destfile>${project.build.directory}/site/jacoco/coverage.exec</jacoco-agent.destfile>
+          </systemPropertyVariables>
         </configuration>
+      </plugin>
+      <plugin>
+        <!-- For JaCoCo coverage when using PowerMock see: -->
+        <!-- See https://github.com/powermock/powermock/wiki/Code-coverage-with-JaCoCo -->
+        <!-- "Offline instrumentation" approach used here -->
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.5</version>
+        <executions>
+          <execution>
+            <id>default-instrument</id>
+            <goals>
+              <goal>instrument</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-restore-instrumented-classes</id>
+            <goals>
+              <goal>restore-instrumented-classes</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <configuration>
+              <dataFile>${project.build.directory}/site/jacoco/coverage.exec</dataFile>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -145,6 +180,13 @@
       <groupId>org.powermock</groupId>
       <artifactId>powermock-api-mockito</artifactId>
       <version>1.6.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jacoco</groupId>
+      <artifactId>org.jacoco.agent</artifactId>
+      <version>0.8.5</version>
+      <classifier>runtime</classifier>
       <scope>test</scope>
     </dependency>
   </dependencies>
