@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.codebrewer</groupId>
   <artifactId>intellij-platform-plugin-utilities</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
   <name>IntelliJ Platform Plugin Utilities</name>
   <url>https://github.com/codebrewer/intellij-platform-plugin-utilities</url>
