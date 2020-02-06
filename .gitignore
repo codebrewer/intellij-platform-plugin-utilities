@@ -1,6 +1,6 @@
 # IntelliJ IDEA
-.idea/dictionaries/
-.idea/workspace.xml
+/.idea/
+*.iml
 
 # Maven
 log/
