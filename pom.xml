@@ -1,31 +1,102 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.codebrewer</groupId>
+
+  <groupId>org.codebrewer.intellij-platform</groupId>
   <artifactId>intellij-platform-plugin-utilities</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.2.M1</version>
   <packaging>jar</packaging>
+
   <name>IntelliJ Platform Plugin Utilities</name>
-  <url>https://github.com/codebrewer/intellij-platform-plugin-utilities</url>
-  <description>Utilities likely to be generally useful to IntelliJ Platform plug-ins.</description>
+  <description>Utilities likely to be generally useful to IntelliJ Platform plug-ins</description>
+  <url>http://github.com/codebrewer/intellij-platform-plugin-utilities</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Mark Scott</name>
+      <email>mark@codebrewer.org</email>
+      <url>https://github.com/codebrewer</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/codebrewer/intellij-platform-plugin-utilities.git</connection>
+    <developerConnection>scm:git:ssh://github.com:codebrewer/intellij-platform-plugin-utilities.git</developerConnection>
+    <url>http://github.com/codebrewer/intellij-platform-plugin-utilities/tree/develop</url>
+  </scm>
+
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/codebrewer/intellij-platform-plugin-utilities/issues</url>
+  </issueManagement>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.jetbrains.intellij.platform</groupId>
+      <artifactId>util</artifactId>
+      <!-- IntelliJ IDEA 2019.3.2 -->
+      <version>193.6015.39</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4</artifactId>
+      <version>1.7.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-mockito</artifactId>
+      <version>1.7.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jacoco</groupId>
+      <artifactId>org.jacoco.agent</artifactId>
+      <version>0.8.5</version>
+      <classifier>runtime</classifier>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
   <repositories>
     <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
       <id>jetbrains-releases</id>
       <name>JetBrains Release Repository</name>
       <url>https://www.jetbrains.com/intellij-repository/releases</url>
+    </repository>
+    <repository>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
-    </repository>
-    <repository>
       <id>jetbrains-3rd-party</id>
       <name>JetBrains 3rd Party Repository</name>
       <url>https://jetbrains.bintray.com/intellij-third-party-dependencies</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
     </repository>
   </repositories>
+
   <build>
     <plugins>
       <plugin>
@@ -71,10 +142,10 @@
           </execution>
           <execution>
             <id>report</id>
-            <phase>prepare-package</phase>
             <goals>
               <goal>report</goal>
             </goals>
+            <phase>prepare-package</phase>
             <configuration>
               <dataFile>${project.build.directory}/site/jacoco/coverage.exec</dataFile>
             </configuration>
@@ -88,10 +159,10 @@
         <executions>
           <execution>
             <id>add-integration-test-source</id>
-            <phase>generate-test-sources</phase>
             <goals>
               <goal>add-test-source</goal>
             </goals>
+            <phase>generate-test-sources</phase>
             <configuration>
               <sources>
                 <source>src/integration-test/java</source>
@@ -100,10 +171,10 @@
           </execution>
           <execution>
             <id>add-integration-test-resource</id>
-            <phase>generate-test-resources</phase>
             <goals>
               <goal>add-test-resource</goal>
             </goals>
+            <phase>generate-test-resources</phase>
             <configuration>
               <resources>
                 <resource>
@@ -134,36 +205,7 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>com.jetbrains.intellij.platform</groupId>
-      <artifactId>util</artifactId>
-      <version>193.6015.39</version> <!-- IntelliJ IDEA 2019.3.2 -->
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-module-junit4</artifactId>
-      <version>1.7.4</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-api-mockito</artifactId>
-      <version>1.7.4</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jacoco</groupId>
-      <artifactId>org.jacoco.agent</artifactId>
-      <version>0.8.5</version>
-      <classifier>runtime</classifier>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+
   <profiles>
     <profile>
       <id>integration</id>
@@ -227,10 +269,10 @@
             <executions>
               <execution>
                 <id>sign-artifacts</id>
-                <phase>verify</phase>
                 <goals>
                   <goal>sign</goal>
                 </goals>
+                <phase>verify</phase>
                 <configuration>
                   <gpgArguments>
                     <arg>--pinentry-mode</arg>
@@ -246,10 +288,4 @@
       </build>
     </profile>
   </profiles>
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
 </project>
