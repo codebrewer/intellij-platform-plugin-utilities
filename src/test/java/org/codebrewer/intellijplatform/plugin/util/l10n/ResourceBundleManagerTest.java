@@ -29,7 +29,7 @@ public class ResourceBundleManagerTest {
 
     when(ResourceBundle.getBundle(objectResourcesName)).thenReturn(objectResourceBundle);
     assertEquals(objectResourceBundle, ResourceBundleManager.getResourceBundle(Object.class));
-    verifyStatic(Mockito.times(1));
+    verifyStatic(ResourceBundle.class, Mockito.times(1));
     ResourceBundle.getBundle(objectResourcesName);
   }
 
@@ -43,7 +43,7 @@ public class ResourceBundleManagerTest {
     when(ResourceBundle.getBundle(objectResourcesName)).thenReturn(objectResourceBundle);
     when(objectResourceBundle.getString(key)).thenReturn(expectedValue);
     assertEquals(expectedValue, ResourceBundleManager.getLocalizedString(Object.class, key));
-    verifyStatic(Mockito.times(1));
+    verifyStatic(ResourceBundle.class, Mockito.times(1));
     ResourceBundle.getBundle(objectResourcesName);
   }
 
@@ -57,7 +57,7 @@ public class ResourceBundleManagerTest {
     when(ResourceBundle.getBundle(objectResourcesName)).thenReturn(objectResourceBundle);
     when(objectResourceBundle.getString(key)).thenReturn(expectedValue);
     assertEquals('\0', ResourceBundleManager.getLocalizedMnemonic(Object.class, key));
-    verifyStatic(Mockito.times(1));
+    verifyStatic(ResourceBundle.class, Mockito.times(1));
     ResourceBundle.getBundle(objectResourcesName);
   }
 
@@ -72,7 +72,7 @@ public class ResourceBundleManagerTest {
     when(objectResourceBundle.getString(key)).thenReturn(expectedValue);
     assertEquals(expectedValue.charAt(0),
         ResourceBundleManager.getLocalizedMnemonic(Object.class, key));
-    verifyStatic(Mockito.times(1));
+    verifyStatic(ResourceBundle.class, Mockito.times(1));
     ResourceBundle.getBundle(objectResourcesName);
   }
 }
