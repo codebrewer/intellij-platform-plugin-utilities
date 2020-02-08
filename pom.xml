@@ -4,7 +4,7 @@
 
   <groupId>org.codebrewer.intellij.platform</groupId>
   <artifactId>intellij-platform-plugin-utilities</artifactId>
-  <version>1.0.2.M2</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
 
   <name>IntelliJ Platform Plugin Utilities</name>
@@ -51,10 +51,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.jetbrains.intellij.platform</groupId>
-      <artifactId>util</artifactId>
-      <!-- IntelliJ IDEA 2019.3.2 -->
-      <version>193.6015.39</version>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>18.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -77,25 +76,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <repositories>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>jetbrains-releases</id>
-      <name>JetBrains Release Repository</name>
-      <url>https://www.jetbrains.com/intellij-repository/releases</url>
-    </repository>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>jetbrains-3rd-party</id>
-      <name>JetBrains 3rd Party Repository</name>
-      <url>https://jetbrains.bintray.com/intellij-third-party-dependencies</url>
-    </repository>
-  </repositories>
 
   <build>
     <plugins>
