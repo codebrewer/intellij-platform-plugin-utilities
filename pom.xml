@@ -57,15 +57,21 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-module-junit4</artifactId>
-      <version>1.7.4</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.9.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-api-mockito</artifactId>
-      <version>1.7.4</version>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-inline</artifactId>
+      <version>4.8.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>4.8.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -94,31 +100,22 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
         <configuration>
-          <excludedGroups>org.codebrewer.test.IntegrationTest</excludedGroups>
-          <systemPropertyVariables>
-            <jacoco-agent.destfile>${project.build.directory}/site/jacoco/coverage.exec</jacoco-agent.destfile>
-          </systemPropertyVariables>
+          <excludedGroups>integration-test</excludedGroups>
         </configuration>
       </plugin>
       <plugin>
-        <!-- For JaCoCo coverage when using PowerMock see: -->
-        <!-- See https://github.com/powermock/powermock/wiki/Code-coverage-with-JaCoCo -->
-        <!-- "Offline instrumentation" approach used here -->
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.5</version>
         <executions>
           <execution>
-            <id>default-instrument</id>
+            <id>jacoco-initialize</id>
             <goals>
-              <goal>instrument</goal>
+              <goal>prepare-agent</goal>
             </goals>
-          </execution>
-          <execution>
-            <id>default-restore-instrumented-classes</id>
-            <goals>
-              <goal>restore-instrumented-classes</goal>
-            </goals>
+            <configuration>
+              <destFile>${project.build.directory}/site/jacoco/coverage.exec</destFile>
+            </configuration>
           </execution>
           <execution>
             <id>report</id>
@@ -198,7 +195,7 @@
               <includes>
                 <include>**/*</include>
               </includes>
-              <groups>org.codebrewer.test.IntegrationTest</groups>
+              <groups>integration-test</groups>
             </configuration>
             <executions>
               <execution>
