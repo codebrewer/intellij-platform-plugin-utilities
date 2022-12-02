@@ -1,5 +1,5 @@
 /*
- * Copyright 2006, 2009, 2013, 2018, 2020 Mark Scott
+ * Copyright 2006, 2009, 2013, 2018, 2020, 2022 Mark Scott
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package org.codebrewer.intellijplatform.plugin.util.l10n;
 import java.util.MissingResourceException;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -41,7 +42,7 @@ public final class ResourceBundleManager {
    *
    * @throws NullPointerException if either parameter is <code>null</code>.
    */
-  public static char getLocalizedMnemonic(final Class<?> clazz, final String key) {
+  public static char getLocalizedMnemonic(final Class<?> clazz, @NonNls final String key) {
     final String localizedString = getLocalizedString(clazz, key);
     final char mnemonic;
 
@@ -67,7 +68,7 @@ public final class ResourceBundleManager {
    * @throws MissingResourceException if no resource is found.
    */
   @NotNull
-  public static String getLocalizedString(final Class<?> clazz, final String key) {
+  public static String getLocalizedString(final Class<?> clazz, @NonNls final String key) {
     Objects.requireNonNull(clazz);
     Objects.requireNonNull(key);
 
