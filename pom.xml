@@ -9,7 +9,7 @@
 
   <name>IntelliJ Platform Plugin Utilities</name>
   <description>Utilities likely to be generally useful to IntelliJ Platform plug-ins</description>
-  <url>http://github.com/codebrewer/intellij-platform-plugin-utilities</url>
+  <url>https://github.com/codebrewer/intellij-platform-plugin-utilities</url>
 
   <licenses>
     <license>
@@ -30,7 +30,7 @@
   <scm>
     <connection>scm:git:git://github.com/codebrewer/intellij-platform-plugin-utilities.git</connection>
     <developerConnection>scm:git:ssh://github.com:codebrewer/intellij-platform-plugin-utilities.git</developerConnection>
-    <url>http://github.com/codebrewer/intellij-platform-plugin-utilities/tree/develop</url>
+    <url>https://github.com/codebrewer/intellij-platform-plugin-utilities/tree/develop</url>
   </scm>
 
   <issueManagement>
@@ -53,25 +53,31 @@
     <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
-      <version>18.0.0</version>
+      <version>23.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-module-junit4</artifactId>
-      <version>1.7.4</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.9.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-api-mockito</artifactId>
-      <version>1.7.4</version>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-inline</artifactId>
+      <version>4.8.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>4.8.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jacoco</groupId>
       <artifactId>org.jacoco.agent</artifactId>
-      <version>0.8.5</version>
+      <version>0.8.8</version>
       <classifier>runtime</classifier>
       <scope>test</scope>
     </dependency>
@@ -82,7 +88,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.10.1</version>
         <configuration>
           <debug>true</debug>
           <source>1.8</source>
@@ -94,31 +100,22 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
         <configuration>
-          <excludedGroups>org.codebrewer.test.IntegrationTest</excludedGroups>
-          <systemPropertyVariables>
-            <jacoco-agent.destfile>${project.build.directory}/site/jacoco/coverage.exec</jacoco-agent.destfile>
-          </systemPropertyVariables>
+          <excludedGroups>integration-test</excludedGroups>
         </configuration>
       </plugin>
       <plugin>
-        <!-- For JaCoCo coverage when using PowerMock see: -->
-        <!-- See https://github.com/powermock/powermock/wiki/Code-coverage-with-JaCoCo -->
-        <!-- "Offline instrumentation" approach used here -->
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.5</version>
+        <version>0.8.8</version>
         <executions>
           <execution>
-            <id>default-instrument</id>
+            <id>jacoco-initialize</id>
             <goals>
-              <goal>instrument</goal>
+              <goal>prepare-agent</goal>
             </goals>
-          </execution>
-          <execution>
-            <id>default-restore-instrumented-classes</id>
-            <goals>
-              <goal>restore-instrumented-classes</goal>
-            </goals>
+            <configuration>
+              <destFile>${project.build.directory}/site/jacoco/coverage.exec</destFile>
+            </configuration>
           </execution>
           <execution>
             <id>report</id>
@@ -135,7 +132,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.3.0</version>
         <executions>
           <execution>
             <id>add-integration-test-source</id>
@@ -175,7 +172,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.8</version>
+        <version>1.6.13</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
@@ -198,7 +195,7 @@
               <includes>
                 <include>**/*</include>
               </includes>
-              <groups>org.codebrewer.test.IntegrationTest</groups>
+              <groups>integration-test</groups>
             </configuration>
             <executions>
               <execution>
@@ -219,7 +216,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.1.1</version>
+            <version>3.4.1</version>
             <executions>
               <execution>
                 <id>attach-javadocs</id>
@@ -245,7 +242,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>3.0.1</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
