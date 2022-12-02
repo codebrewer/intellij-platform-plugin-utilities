@@ -9,7 +9,7 @@
 
   <name>IntelliJ Platform Plugin Utilities</name>
   <description>Utilities likely to be generally useful to IntelliJ Platform plug-ins</description>
-  <url>http://github.com/codebrewer/intellij-platform-plugin-utilities</url>
+  <url>https://github.com/codebrewer/intellij-platform-plugin-utilities</url>
 
   <licenses>
     <license>
@@ -30,7 +30,7 @@
   <scm>
     <connection>scm:git:git://github.com/codebrewer/intellij-platform-plugin-utilities.git</connection>
     <developerConnection>scm:git:ssh://github.com:codebrewer/intellij-platform-plugin-utilities.git</developerConnection>
-    <url>http://github.com/codebrewer/intellij-platform-plugin-utilities/tree/develop</url>
+    <url>https://github.com/codebrewer/intellij-platform-plugin-utilities/tree/develop</url>
   </scm>
 
   <issueManagement>
